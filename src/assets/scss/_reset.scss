@@ -1,0 +1,28 @@
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+button, input {
+    overflow: visible;
+}
+
+small {
+    font-size: 80%;
+}
+
+button, select {
+    text-transform: none;
+    outline: none;
+}
+
+[type=reset], [type=submit], button, html [type=button] {
+    -webkit-appearance: button;
+}
