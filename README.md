@@ -1,8 +1,13 @@
 # vue-validator
-
 > A project to validate vue input fields
+ # Exapple to use
+ ``` bash
+ <input v-validate:FUNCTION_TO_BE_CALLED_ON_VALIDATION="'modelName'">
+ > For full example see : Vue-Validator/src/components/TestForm.vue
 
-## Build Setup
+
+
+## Vue Build Setup of project
 
 ``` bash
 # install dependencies
