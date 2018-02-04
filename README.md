@@ -1,10 +1,7 @@
 # vue-validator
 > A project to validate vue input fields
-# Example to use
- <input v-validate:FUNCTION_TO_BE_CALLED_ON_VALIDATION="'modelName'">
+## Example to use
 > For full example see : Vue-Validator/src/components/TestForm.vue
-
-
 
 ## Vue Build Setup of project
 
