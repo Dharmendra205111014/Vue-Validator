@@ -1,9 +1,8 @@
 /*
  * @Author: dharmendra.patel26@gmail.com 
- * @Date: 2018-02-04 17:58:40 
+ * @Date: 2018-02-04 17:57:04 
  * @Last Modified by:   dharmendra.patel26@gmail.com 
- * @Last Modified time: 2018-02-04 17:58:40 
- * @deprecated
+ * @Last Modified time: 2018-02-04 17:57:04 
  */
 <template>
   <div class="hello">
@@ -11,23 +10,23 @@
     <div class="container">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input v-validate:email="validateEmail"
+        <input v-validate:validateEmail="'email'"
                type="email" class="form-control"
                aria-describedby="emailHelp" 
                placeholder="Enter email"
-               v-bind:class="{'error':validate.show && validate.errors.email}"
+               v-bind:class="{'error':validate.show && validate.hasError('email')}"
                v-model="input.mail">
-        <small class="errorMsg" v-bind:class="{'show': validate.show && validate.errors.email}">{{validate.errors.email}}</small>
+        <small class="errorMsg" v-bind:class="{'show': validate.show && validate.hasError('email')}">{{validate.getError('email')}}</small>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input v-validate:password="'validatePassword'"
+        <input v-validate:validatePassword="'password'"
                type="password" 
                class="form-control" 
                placeholder="Password" 
-              v-bind:class="{'error':(validate.show && validate.errors.password)}"
+               v-bind:class="{'error':(validate.show && validate.hasError('password'))}"
                v-model="input.password">
-        <small class="errorMsg" v-bind:class="{'show': (validate.show && validate.errors.password)}">{{validate.errors.password}}</small>
+        <small class="errorMsg" v-bind:class="{'show': (validate.show && validate.hasError('password'))}">{{validate.getError('password')}}</small>
       </div>
       <button class="btn btn-primary" @click="submit">Submit</button>
     </div>
@@ -35,13 +34,16 @@
 </template>
 
 <script>
-import { validator } from '../mixin/Validator';
+import { validator } from '../mixin/validation/validator';
+
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
 export default {
   name: 'Form',
   mixins: [validator],
   data() {
     return {
-      msg: 'Form vue validator',
+      msg: 'Test Form vue validator',
       input: {
         mail: '',
         password: ''
@@ -56,9 +58,8 @@ export default {
         console.log(this.validate);
       }
     },
-    validateEmail() {
-      let res = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.input.mail);
-      return !res ? "Please enter correct email": '';
+    validateEmail(val) {
+      return !EMAIL_REGEX.test(val) ? 'Please enter correct email': '';
     }
   },
   created() {

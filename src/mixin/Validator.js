@@ -1,3 +1,11 @@
+/*
+ * @Author: dharmendra.patel26@gmail.com 
+ * @Date: 2018-02-04 17:57:32 
+ * @Last Modified by: dharmendra.patel26@gmail.com
+ * @Last Modified time: 2018-02-04 17:58:18
+ * @deprecated
+ */
+ 
 const isEmpty = (obj) => {
     for(var key in obj) {
         if(obj.hasOwnProperty(key))
